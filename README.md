@@ -1,6 +1,6 @@
 # BuzzIt
 
-[<img alt="logo" src="https://i.imgur.com/H0kyza6.png" width="420" height="219">]
+<img alt="logo" src="https://i.imgur.com/H0kyza6.png" width="420" height="319">
 
 Logo made with (https://logojoy.com/)
 
