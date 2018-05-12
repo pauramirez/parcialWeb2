@@ -7,13 +7,13 @@ This is a web page that helps you know the location of the different busses in S
 # How to run it?
 
 1. Clone the project 
-	git clone https://github.com/pauramirez/ParcialWeb2Realoaded.git
+	* `index git clone (https://github.com/pauramirez/ParcialWeb2Realoaded.git)`
 2. Go to created folder
-	cd parcialWeb2
+	`cd parcialWeb2`
 3. Install packages 
-	meteor npm install
+	`meteor npm install`
 4. Run it!
-	meteor 
+	`meteor`
 
 
 # Result!
