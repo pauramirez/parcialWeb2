@@ -11,7 +11,7 @@ export const Buses = new Mongo.Collection("buses");
 
 if (Meteor.isServer) {
   // This code only runs on the server
-  Meteor.publish('tweets', function postsPublication() {
+  Meteor.publish('buses', function postsPublication() {
     return Tweets.find();
   });
 }

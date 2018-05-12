@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withTracker } from "meteor/react-meteor-data";
 import NavBar from "./NavBar";
-import BussInfo from "./BussInfo"
+import BussInfo from "./BussInfo";
+import Form from "./Form";
+import Grafica from "./Grafica";
 
 //import Filter from "./Filter";
 
@@ -30,11 +32,11 @@ export class App extends Component {
     	else return true;
   	}
 
-  	searchRoutes(lat1,lon1,lat2,lon2)
-  	{  
-    	deg2rad(deg) {
+    deg2rad(deg) {
       return deg * (Math.PI/180);
-      }
+    }
+
+  	searchRoutes(lat1,lon1,lat2,lon2) {
 
         R = 6371; // Radius of the earth in km
         dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -90,12 +92,13 @@ export class App extends Component {
         				>Find
         				</button>
   					</div>
+              
   					<div className ="col-sm-6">
-
+              <form/>
   					</div>
   				</div>
   				<div className ="row">
-  					<StockInfo/>
+  					<Grafica/>
   				</div>
   			</div>
   		)

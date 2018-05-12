@@ -1,22 +1,26 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
+import Grafica from "./Grafica";
 
 
-export default class BussInfo extends Component {
+export default class BussInfo extends Component{
 
-  const BussInfo = (props) => {
-    const {
-        data
-    } = props;
+  constructor(props) {
+    super(props);
 
-    const nestedBuses = d3.nest().key((d) => d.routeTag).entries(data.vehicle)
-    const maxNumBuses = d3.max(nestedBuses.map((d) => d.values.length))
-    const stackedBuses = d3.stack().keys(keys).value((d, key) => {
+      this.state={
+
+      };
+    }
+
+    nestedBuses = d3.nest().key((d) => d.routeTag).entries(data.vehicle)
+    maxNumBuses = d3.max(nestedBuses.map((d) => d.values.length))
+    stackedBuses = d3.stack().keys(keys).value((d, key) => {
                 return key < d.values.length ? d.values[key].distance : 0;
         })(nestedBuses)
 
-    const rows = [];
-    const keys = d3.range(maxNumBuses)
+    rows = [];
+    keys = d3.range(maxNumBuses);
 
     graph(d, key){
       stackedBuses = d3.stack()
@@ -26,11 +30,11 @@ export default class BussInfo extends Component {
         })(nestedBuses)
     }
 
-    searchRoutes(lat1,lon1,lat2,lon2){  
-        
-        deg2rad(deg) {
+    deg2rad(deg) {
             return deg * (Math.PI/180);
         }
+
+    searchRoutes(lat1,lon1,lat2,lon2){  
 
         R = 6371; // Radius of the earth in km
         dLat = deg2rad(lat2-lat1);  // deg2rad below
@@ -59,14 +63,10 @@ export default class BussInfo extends Component {
     return nestedBuses.sort(function(a, b) { return b.total - a.total; });
     }
 
-
-    return (
+    render() {
+      return (
         <div>
-            <p>{ticker}</p>;
-            <p>{lastRefreshed}</p>;
-            <p>{timezone}</p>;
             <br />
-
             <LineChart width={600} height={300} data={rows}
                 margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                 <XAxis dataKey="date" />
@@ -80,8 +80,6 @@ export default class BussInfo extends Component {
                 <Line type="monotone" dataKey="close" stroke="#868A08" dot={false} />
             </LineChart>
         </div>
-    )
-  };
+      )
+    }
 }
-
-export default BussInfo;
